@@ -1,10 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InterestController;
-use App\Http\Controllers\OfferController;
+use App\Http\Controllers\VerifyEmailController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +18,9 @@ use App\Http\Controllers\OfferController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('verify/{hash}/email', [VerifyEmailController::class, 'index'])->name('verify');
+
+
+
 
