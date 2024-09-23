@@ -23,7 +23,7 @@ class ParsePriceHelperTest extends TestCase
 
         Advertisement::query()->create(['url' => self::URL, 'ad_id' => self::AD_ID]);
 
-        $this->advertisement = Advertisement::query()->find(1);
+        $this->advertisement = Advertisement::query()->orderByDesc('id')->limit(1)->first();
 
     }
 

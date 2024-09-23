@@ -22,16 +22,16 @@ class ParseIdHelperTest extends TestCase
 
         Advertisement::query()->create(['url' => self::URL]);
 
-        $this->advertisement = Advertisement::query()->find(1);
+        $this->advertisement = Advertisement::query()->orderByDesc('id')->limit(1)->first();
 
     }
 
 
-    public function testGetIdSuccessfullyUpdatesAdvertisement()
+    public function test_getId_successfully_updates_advertisement()
     {
         ParseIdHelper::getId($this->advertisement->id);
 
-        $advertisement = Advertisement::query()->find(1);
+        $advertisement = Advertisement::query()->orderByDesc('id')->limit(1)->first();
 
         $this->assertEquals($advertisement->url,self::URL);
         $this->assertNotNull($advertisement->ad_id);

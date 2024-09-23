@@ -18,7 +18,7 @@ class VerifyEmailControllerTest extends TestCase
 
         $this->user = User::factory()->create([
             'email' => 'test@example.com',
-            'email_verified' => null
+            'email_verified_at' => null
         ]);
     }
 
@@ -31,7 +31,7 @@ class VerifyEmailControllerTest extends TestCase
 
         $this->user->refresh();
 
-        $this->assertNotNull($this->user->email_verified);
+        $this->assertNotNull($this->user->email_verified_at);
 
         $response->assertViewHas('message', 'Your Email Verified');
     }
@@ -39,7 +39,7 @@ class VerifyEmailControllerTest extends TestCase
     public function test_email_already_verified()
     {
 
-        $this->user->update(['email_verified' => now()]);
+        $this->user->update(['email_verified_at' => now()]);
 
         $hash = Crypt::encryptString('test@example.com');
 

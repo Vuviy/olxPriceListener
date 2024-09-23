@@ -38,7 +38,7 @@ class SetPriceHelperTest extends TestCase
 
         SetPriceHelper::setPrice($this->advertisement->id);
 
-        $advertisement = Advertisement::query()->find(1);
+        $advertisement = Advertisement::query()->orderByDesc('id')->limit(1)->first();
 
         $this->assertNotNull($advertisement->price);
 
