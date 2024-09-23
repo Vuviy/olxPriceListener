@@ -14,14 +14,20 @@ class SubscribeController
     public function index(SubscribeRequest $request)
     {
 
+
+
+
         $arrayLink = explode('.html', $request->link);
 
-        $link = Advertisement::query()->where('url', $arrayLink[0].'.html')->first();
 
-        if (null === $link) {
-            $link = Advertisement::query()->create(['url' => $arrayLink[0].'.html']);
-            CheckPriceJob::dispatch($link->id);
+        $advertisement = Advertisement::query()->where('url', $arrayLink[0].'.html')->first();
+
+        if (null === $advertisement) {
+            $advertisement = Advertisement::query()->create(['url' => $arrayLink[0].'.html']);
+            CheckPriceJob::dispatch($advertisement->id);
         }
+//        dd($advertisement);
+
 
 
         $user = User::query()->where('email', $request->email)->first();
@@ -31,7 +37,7 @@ class SubscribeController
             VerifyEmaillJob::dispatch($user->email);
         }
 
-        $user->advertisements()->attach($link->id);
+        $user->advertisements()->attach($advertisement->id);
 
         return response()->json(['message' => 'Data is valid']);
     }

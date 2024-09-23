@@ -19,7 +19,7 @@ class CheckPriceJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(private readonly int $advertisementId){}
+    public function __construct(public readonly int $advertisementId){}
 
     /**
      * Execute the job.

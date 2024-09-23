@@ -20,7 +20,7 @@ class VerifyEmaillJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(private readonly string $email)
+    public function __construct(public readonly string $email)
     {
     }
 

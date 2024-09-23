@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class UserFactory extends Factory
+class AdvertisementFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,9 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'url' => fake()->url(),
+            'ad_id' => random_int(100, 1000),
+            'price' => random_int(100,1000),
         ];
     }
 

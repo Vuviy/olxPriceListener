@@ -5,9 +5,9 @@ namespace App\Http\Helper;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendMailJob;
 use App\Models\Advertisement;
-use App\Services\ApiService;
+use App\Services\ApiOLXService;
 
-class SetPriceHelper extends Controller
+class SetPriceHelper
 {
     public static function setPrice(int $advertisementId)
     {

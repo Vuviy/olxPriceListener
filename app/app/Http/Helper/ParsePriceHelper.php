@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Advertisement;
 use DiDom\Document;
 
-class ParsePriceHelper extends Controller
+class ParsePriceHelper
 {
     public static function getPrice(int $advertisementId)
     {

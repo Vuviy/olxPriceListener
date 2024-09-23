@@ -19,8 +19,6 @@ class Advertisement extends Model
 
     public function verifiedUsers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class)->whereNotNull('email_verified');
+        return $this->belongsToMany(User::class)->whereNotNull('email_verified_at');
     }
-
-
 }
