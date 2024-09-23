@@ -15,9 +15,6 @@ use App\Http\Controllers\VerifyEmailController;
 |
 */
 //
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('verify/{hash}/email', [VerifyEmailController::class, 'index'])->name('verify');
 

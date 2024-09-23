@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  title: Subscription on OLX Ad
+  version: 1.0.0
+  description: API for Subscription on OLX Ad
+servers:
+  - url: http://localhost
+paths:
+  /api/subscribe:
+    post:
+      summary: Підписка користувача на оголошення
+      description: Отримує посилання та email, створює нову підписку на оголошення.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                link:
+                  type: string
+                  description: Посилання на оголошення
+                  example: "https://www.olx.ua/d/uk/obyavlenie/tomati-sma4nenki-IDVfZ7y.html"
+                email:
+                  type: string
+                  description: Email користувача
+                  example: "user@example.com"
+              required:
+                - link
+                - email
+      responses:
+        '200':
+          description: Успішна відповідь
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Data is valid"
+        '400':
+          description: Невірний запит
+        '500':
+          description: Внутрішня помилка сервера
+  /verify/{hash}/email:
+    get:
+      summary: Верифікація email користувача
+      description: Верифікує email користувача за хешем.
+      parameters:
+        - name: hash
+          in: path
+          required: true
+          description: Хеш для верифікації email
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Успішна верифікація
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "<html>Your Email Verified</html>"
+        '400':
+          description: Помилка верифікації
+        '404':
+          description: Email не знайдено або вже верифікований
