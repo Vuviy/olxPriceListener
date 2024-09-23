@@ -17,9 +17,11 @@ class SetPriceHelper
 //        $apiService = app(ApiService::class);
 //        $price = $apiService->getPriceFromApi($link->ad_id);
 
+// цим способом $price отримується довго так як OLX деякий час не оновлює ціну тому я застосував спосіб нижче
+
         $price = ParsePriceHelper::getPrice($advertisementId);
 
-        if (null === $advertisement->price){
+        if (null === $advertisement->price) {
             $advertisement->update(['price' => $price]);
             return;
         }

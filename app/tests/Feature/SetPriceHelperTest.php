@@ -3,11 +3,9 @@
 namespace Tests\Feature;
 
 use App\Http\Helper\SetPriceHelper;
-use App\Jobs\CheckPriceJob;
 use App\Jobs\SendMailJob;
 use App\Models\Advertisement;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Queue;
 use Mockery;
 use Tests\TestCase;

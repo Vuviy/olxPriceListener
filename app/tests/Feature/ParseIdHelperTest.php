@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Http\Helper\ParseIdHelper;
 use App\Models\Advertisement;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Mockery;
 use Tests\TestCase;
 
 class ParseIdHelperTest extends TestCase

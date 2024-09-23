@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Http\Helper\ParsePriceHelper;
 use App\Models\Advertisement;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Mockery;
 use Tests\TestCase;
 
 class ParsePriceHelperTest extends TestCase

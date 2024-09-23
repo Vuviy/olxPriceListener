@@ -2,11 +2,9 @@
 
 namespace App\Jobs;
 
-use App\Http\Helper\SetPriceHelper;
 use App\Mail\PriceNotificationMail;
 use App\Models\Advertisement;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
