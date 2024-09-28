@@ -34,7 +34,7 @@ class CheckPriceCommand extends Command
 
         if (null !== $advertisements) {
             foreach ($advertisements as $advertisement) {
-                SetPriceHelper::setPrice($advertisement->id);
+                SetPriceHelper::setPrice($advertisement);
             }
         }
 

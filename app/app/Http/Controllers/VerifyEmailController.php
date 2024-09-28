@@ -2,25 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Crypt;
-
+use App\Http\Handler\CheckVerificationHandler;
 class VerifyEmailController
 {
+    public function __construct(private readonly CheckVerificationHandler $handler)
+    {
+    }
+
     public function index(string $hash)
     {
-        $email = Crypt::decryptString($hash);
-        $user = User::query()->where('email', $email)->first();
-        $message = 'Something went wrong. Try again';
+        $message = $this->handler->handle($hash);
 
-        if (null !== $user) {
-            if (null !== $user->email_verified_at) {
-                $message = 'This email has already been verified';
-                return view('verify', compact('message'));
-            }
-            $user->update(['email_verified_at' => now()]);
-            $message = 'Your Email Verified';
-        }
         return view('verify', compact('message'));
     }
 }

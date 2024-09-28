@@ -26,7 +26,6 @@ class SubscribeRequest extends FormRequest
         return [
             'link'=> 'regex:/^https:\/\/www\.olx\.ua.*/',
             'email'=> 'email',
-//            'email'=> 'email|unique:users,email',
         ];
     }
 }

@@ -20,7 +20,7 @@ class VerifyEmaillJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(public readonly string $email)
+    public function __construct(public readonly string $email, public readonly string $hash)
     {
     }
 
@@ -31,8 +31,7 @@ class VerifyEmaillJob implements ShouldQueue
      */
     public function handle()
     {
-        $hash = Crypt::encryptString($this->email);
-        $verifyLink = route('verify', ['hash' => $hash]);
+        $verifyLink = route('verify', ['hash' => $this->hash]);
 
         Mail::to($this->email)->send(new EmailVerifyMail($verifyLink));
 

@@ -3,7 +3,9 @@
 namespace App\Jobs;
 
 use App\Http\Helper\ParseIdHelper;
+use App\Http\Helper\ParserHelper;
 use App\Http\Helper\SetPriceHelper;
+use App\Models\Advertisement;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -28,7 +30,13 @@ class CheckPriceJob implements ShouldQueue
      */
     public function handle()
     {
-        ParseIdHelper::getId($this->advertisementId);
-        SetPriceHelper::setPrice($this->advertisementId);
+        $advertisement = Advertisement::query()->find($this->advertisementId);
+
+        $parser = new ParserHelper($advertisement);
+
+        $id = $parser->getId();
+        $price = $parser->getPrice();
+
+        $advertisement->update(['ad_id' => $id, 'price' => $price]);
     }
 }

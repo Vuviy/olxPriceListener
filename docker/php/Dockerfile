@@ -18,14 +18,6 @@ RUN apt-get update && apt-get install -y supervisor
 
 RUN apt-get update && apt-get install -y procps
 
-
-# Node.js and npm
-#RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-#    && apt-get install -y nodejs
-#
-## Check Node.js and npm
-#RUN node -v && npm -v
-
 # Install Composer
 COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
@@ -47,7 +39,3 @@ WORKDIR /var/www/html
 EXPOSE 9000
 
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
-
-
-#* * * * * echo "66666" >> /tmp/cron-l.log 2>&1
-#* * * * * php /var/www/html/artisan schedule:run >> /dev/null 2>&1

@@ -30,17 +30,7 @@ cd olxPriceListener
 cp .env.example .env
 ```
 
-#### Внесіть зміни до вашого .env файлу для налаштування доступу до бази даних та інших сервісів
-
-```bash
-DB_CONNECTION=mysql
-DB_HOST=db
-DB_PORT=3306
-DB_DATABASE=olxPrice
-DB_USERNAME=root
-DB_PASSWORD=root
-```
-#### Для відправки email ви можете налаштувати своє з'єднання
+#### Для відправки email налаштуйте з'єднання
 
 ```bash
 MAIL_MAILER=smtp
@@ -48,18 +38,6 @@ MAIL_HOST=smtp.gmail.com
 MAIL_PORT=465
 MAIL_USERNAME=your-username
 MAIL_PASSWORD=your-password
-MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS="hello@example.com"
-MAIL_FROM_NAME="OLX PriceListener"
-```
-
-#### або скористатись моїм
-```bash
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=465
-MAIL_USERNAME=vova.banudz@gmail.com
-MAIL_PASSWORD=xkpjqrljqmuleojp
 MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS="hello@example.com"
 MAIL_FROM_NAME="OLX PriceListener"

@@ -22,6 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'email',
         'email_verified_at',
+        'hash',
     ];
 
     public function advertisements(): BelongsToMany

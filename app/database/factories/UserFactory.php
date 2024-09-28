@@ -20,6 +20,7 @@ class UserFactory extends Factory
         return [
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'hash' => fake()->text(100),
         ];
     }
 
