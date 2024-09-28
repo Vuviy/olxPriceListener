@@ -27,7 +27,7 @@ class SubscribeProcessHandler
         if (null === $user) {
             $hash = Crypt::encryptString(now(). $request->email);
             $user = User::query()->create(['email' => $request->email, 'hash' => $hash]);
-            VerifyEmaillJob::dispatch($user->email);
+            VerifyEmaillJob::dispatch($user->email, $hash);
         }
 
         $user->advertisements()->attach($advertisement->id);

@@ -7,7 +7,6 @@ services:
       - './app:/var/www/html'
     container_name: php
 
-
   nginx:
     image: nginx:1.27.1
     ports:
